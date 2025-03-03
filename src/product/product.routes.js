@@ -1,5 +1,44 @@
-import { Router } from 'express'
+import { Router } from 'express';
+import { save, getAll, getById, update, eliminate, searchByName } from './product.controller.js';
+import { validateJwt } from '../../middlewares/validate.jwt.js';
+import { validateAdmin } from '../../helpers/validate.role.js';
 
-const api = Router()
+const router = Router();
 
-export default api
+router.post(
+    '/',
+    [validateJwt,validateAdmin],
+    save
+)
+
+router.get(
+    '/', 
+    [validateJwt,validateAdmin],
+    getAll
+)
+
+router.get(
+    '/name/', 
+    [validateJwt,validateAdmin],
+    searchByName
+)
+
+router.get(
+    '/:id', 
+    [validateJwt,validateAdmin],
+    getById
+)
+
+router.put(
+    '/:id',
+    [validateJwt,validateAdmin],
+    update
+)
+
+router.delete(
+    '/:id',
+    [validateJwt,validateAdmin],
+    eliminate
+)
+
+export default router
