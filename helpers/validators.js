@@ -1,5 +1,5 @@
 import { body } from "express-validator"
-import { existEmail, existUsername, objectIdValid } from "./db.validators.js"
+import { existEmail, existProduct, existUsername, objectIdValid } from "./db.validators.js"
 
 export const registerValidator = [
     body('name', 'Name cannot be empty').notEmpty(),
@@ -28,6 +28,15 @@ export const updateClient = [
 export const addCategory = [
     body('name', 'Name cannot be empty').notEmpty(),
     body('description', 'Description cannot be empty').notEmpty(),
+    body('status', 'Status cannot be empty').notEmpty()
+]
+
+export const addProduct = [
+    body('name', 'Name cannot be empty').notEmpty().custom(existProduct),
+    body('description', 'Description cannot be empty').notEmpty(),
+    body('price', 'Status cannot be empty').notEmpty(),
+    body('category', 'Status cannot be empty').notEmpty(),
+    body('stock', 'Status cannot be empty').notEmpty(),
     body('status', 'Status cannot be empty').notEmpty()
 ]
 

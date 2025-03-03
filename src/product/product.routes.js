@@ -2,12 +2,13 @@ import { Router } from 'express';
 import { save, getAll, getById, update, eliminate, searchByName } from './product.controller.js';
 import { validateJwt } from '../../middlewares/validate.jwt.js';
 import { validateAdmin } from '../../helpers/validate.role.js';
+import { addProduct } from '../../helpers/validators.js';
 
 const router = Router();
 
 router.post(
     '/',
-    [validateJwt,validateAdmin],
+    [validateJwt,validateAdmin, addProduct],
     save
 )
 
