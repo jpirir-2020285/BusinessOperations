@@ -132,7 +132,7 @@ export const getOutOfStock = async (req, res) => {
 // Buscar productos por nombre (solo productos activos)
 export const searchByName = async (req, res) => {
     try {
-        const { name, limit = 20, skip = 0 } = req.query;
+        const { name, limit, skip = 0 } = req.query;
 
         if (!name) {
             return res.status(400).send({ success: false, message: "Name query parameter is required" });
@@ -160,6 +160,38 @@ export const searchByName = async (req, res) => {
         return res.status(500).send({
             success: false,
             message: "Error searching products",
+            error: err.message
+        });
+    }
+};
+
+export const getByCategory = async (req, res) => {
+    try {
+        const { category, limit = 20, skip = 0 } = req.query;
+
+        if (!category) {
+            return res.status(400).send({ success: false, message: "Category query parameter is required" });
+        }
+
+        const products = await Product.find({ category: category, status: true })
+            .skip(Number(skip))
+            .limit(Number(limit));
+
+        if (products.length === 0) {
+            return res.status(404).send({ success: false, message: "No products found in this category" });
+        }
+
+        return res.send({
+            success: true,
+            message: "Products found in category",
+            products,
+            total: products.length
+        });
+    } catch (err) {
+        console.error(err);
+        return res.status(500).send({
+            success: false,
+            message: "Error fetching products by category",
             error: err.message
         });
     }

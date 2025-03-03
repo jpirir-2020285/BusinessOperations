@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { save, getAll, getById, update, eliminate, searchByName } from './product.controller.js';
+import { save, getAll, getById, update, eliminate, searchByName, getOutOfStock, getByCategory } from './product.controller.js';
 import { validateJwt } from '../../middlewares/validate.jwt.js';
-import { validateAdmin } from '../../helpers/validate.role.js';
+import { validateAdmin, validateClient } from '../../helpers/validate.role.js';
 import { addProduct } from '../../helpers/validators.js';
 
 const router = Router();
@@ -20,8 +20,14 @@ router.get(
 
 router.get(
     '/name/', 
-    [validateJwt,validateAdmin],
+    [validateJwt,validateClient],
     searchByName
+)
+
+router.get(
+    '/ofstock', 
+    [validateJwt,validateAdmin],
+    getOutOfStock
 )
 
 router.get(
@@ -40,6 +46,12 @@ router.delete(
     '/:id',
     [validateJwt,validateAdmin],
     eliminate
+)
+
+router.get(
+    '/category',
+    [validateJwt,validateClient],
+    getByCategory
 )
 
 export default router
