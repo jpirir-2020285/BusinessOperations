@@ -1,6 +1,5 @@
-import { Schema, model } from 'mongoose';
+import { Schema, model } from 'mongoose'
 
-// Modelo de Factura
 const invoiceSchema = new Schema(
     {
         user: {
@@ -42,6 +41,6 @@ const invoiceSchema = new Schema(
         }
     },
     { timestamps: true }
-);
+)
 
-export default model('Invoice', invoiceSchema);
+export default model('Invoice', invoiceSchema)

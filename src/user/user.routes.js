@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { test, update, eliminate, updateProfile } from './user.controller.js'
+import { test, update, eliminate, updateProfile, deleteAccount } from './user.controller.js'
 import { validateJwt } from '../../middlewares/validate.jwt.js'
 import { validateAdmin, validateClient } from '../../helpers/validate.role.js'
 
@@ -33,3 +33,8 @@ api.put(
     updateProfile
 )
 
+api.delete(
+    '/client/delete', 
+    [validateJwt,validateClient], 
+    deleteAccount
+)

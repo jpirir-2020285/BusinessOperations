@@ -1,4 +1,4 @@
-import { Schema, model } from 'mongoose';
+import { Schema, model } from 'mongoose'
 
 const cartSchema = new Schema(
     {
@@ -27,6 +27,6 @@ const cartSchema = new Schema(
         }
     },
     { timestamps: true }
-);
+)
 
-export default model('Cart', cartSchema);
+export default model('Cart', cartSchema)

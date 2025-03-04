@@ -113,29 +113,29 @@ export const eliminate = async (req, res) => {
 
 export const getOutOfStock = async (req, res) => {
     try {
-        const products = await Product.find({ stock: 0, status: true }).sort({ name: 1 });
+        const products = await Product.find({ stock: 0, status: true }).sort({ name: 1 })
 
         if (products.length === 0)
-            return res.status(404).send({ success: false, message: "No out-of-stock products found" });
+            return res.status(404).send({ success: false, message: "No out-of-stock products found" })
 
         return res.send({
             success: true,
             message: "Out-of-stock products retrieved successfully",
             products
-        });
+        })
     } catch (err) {
-        console.error(err);
-        return res.status(500).send({ success: false, message: "Error fetching out-of-stock products", error: err.message });
+        console.error(err)
+        return res.status(500).send({ success: false, message: "Error fetching out-of-stock products", error: err.message })
     }
-};
+}
 
 // Buscar productos por nombre (solo productos activos)
 export const searchByName = async (req, res) => {
     try {
-        const { name, limit, skip = 0 } = req.query;
+        const { name, limit, skip = 0 } = req.query
 
         if (!name) {
-            return res.status(400).send({ success: false, message: "Name query parameter is required" });
+            return res.status(400).send({ success: false, message: "Name query parameter is required" })
         }
 
         const products = await Product.find({ 
@@ -143,10 +143,10 @@ export const searchByName = async (req, res) => {
             status: true 
         })
         .skip(Number(skip))
-        .limit(Number(limit));
+        .limit(Number(limit))
 
         if (products.length === 0) {
-            return res.status(404).send({ success: false, message: "No matching products found" });
+            return res.status(404).send({ success: false, message: "No matching products found" })
         }
 
         return res.send({
@@ -154,31 +154,31 @@ export const searchByName = async (req, res) => {
             message: "Matching products found",
             products,
             total: products.length
-        });
+        })
     } catch (err) {
-        console.error(err);
+        console.error(err)
         return res.status(500).send({
             success: false,
             message: "Error searching products",
             error: err.message
-        });
+        })
     }
-};
+}
 
 export const getByCategory = async (req, res) => {
     try {
-        const { category, limit = 20, skip = 0 } = req.query;
+        const { category, limit = 20, skip = 0 } = req.query
 
         if (!category) {
-            return res.status(400).send({ success: false, message: "Category query parameter is required" });
+            return res.status(400).send({ success: false, message: "Category query parameter is required" })
         }
 
         const products = await Product.find({ category: category, status: true })
             .skip(Number(skip))
-            .limit(Number(limit));
+            .limit(Number(limit))
 
         if (products.length === 0) {
-            return res.status(404).send({ success: false, message: "No products found in this category" });
+            return res.status(404).send({ success: false, message: "No products found in this category" })
         }
 
         return res.send({
@@ -186,13 +186,25 @@ export const getByCategory = async (req, res) => {
             message: "Products found in category",
             products,
             total: products.length
-        });
+        })
     } catch (err) {
-        console.error(err);
+        console.error(err)
         return res.status(500).send({
             success: false,
             message: "Error fetching products by category",
             error: err.message
-        });
+        })
     }
-};
+}
+
+export const getTopSellingProducts = async (req, res) => {
+    try {
+        const { limit = 10 } = req.query
+        const products = await Product.find().sort({ sold: -1 }) .limit(Number(limit)).populate("category", "name")
+        if (products.length === 0) return res.status(404).send({ success: false, message: "No top-selling products found" })
+        return res.send({ success: true, message: "Top-selling products retrieved successfully", products })
+    } catch (err) {
+        console.error(err)
+        return res.status(500).send({ success: false, message: "General error", error: err.message })
+    }
+}

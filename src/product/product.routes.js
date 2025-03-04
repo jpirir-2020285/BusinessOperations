@@ -1,10 +1,10 @@
-import { Router } from 'express';
-import { save, getAll, getById, update, eliminate, searchByName, getOutOfStock, getByCategory } from './product.controller.js';
-import { validateJwt } from '../../middlewares/validate.jwt.js';
-import { validateAdmin, validateClient } from '../../helpers/validate.role.js';
-import { addProduct } from '../../helpers/validators.js';
+import { Router } from 'express'
+import { save, getAll, getById, update, eliminate, searchByName, getOutOfStock, getByCategory, getTopSellingProducts } from './product.controller.js'
+import { validateJwt } from '../../middlewares/validate.jwt.js'
+import { validateAdmin, validateClient } from '../../helpers/validate.role.js'
+import { addProduct, deleteProduct, updateProduct } from '../../helpers/validators.js'
 
-const router = Router();
+const router = Router()
 
 router.post(
     '/',
@@ -38,13 +38,13 @@ router.get(
 
 router.put(
     '/:id',
-    [validateJwt,validateAdmin],
+    [validateJwt,validateAdmin,updateProduct],
     update
 )
 
 router.delete(
     '/:id',
-    [validateJwt,validateAdmin],
+    [validateJwt,validateAdmin,deleteProduct],
     eliminate
 )
 
@@ -52,6 +52,12 @@ router.get(
     '/category',
     [validateJwt,validateClient],
     getByCategory
+)
+
+router.get(
+    '/topselling', 
+    [validateJwt, validateAdmin],
+    getTopSellingProducts
 )
 
 export default router

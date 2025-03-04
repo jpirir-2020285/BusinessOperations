@@ -1,5 +1,6 @@
 import User from "./user.model.js"
 import {encrypt} from '../../utils/encrypt.js'
+
 export const test = (req, res)=>{
     console.log('test is running')
     return res.send({message: 'Test is running'})
@@ -82,5 +83,37 @@ export const updateProfile = async(req,res)=>{
     } catch (err) {
         console.console.log(err)
         return res.status(500).send({message: 'General Error',err})
+    }
+}
+
+export const deleteAccount = async (req, res) => {
+    try {
+        const userId = req.user.id
+        const { password, confirmPassword } = req.body
+
+        if (!password || !confirmPassword) {
+            return res.status(400).send({ success: false, message: "Both password fields are required" })
+        }
+
+        if (password !== confirmPassword) {
+            return res.status(400).send({ success: false, message: "Passwords do not match" })
+        }
+
+        const user = await User.findById(userId)
+        if (!user) {
+            return res.status(404).send({ success: false, message: "User not found" })
+        }
+
+        const isMatch = await bcrypt.compare(password, user.password)
+        if (!isMatch) {
+            return res.status(401).send({ success: false, message: "Incorrect password" })
+        }
+
+        await User.findByIdAndDelete(userId)
+        return res.send({ success: true, message: "User account deleted successfully" })
+
+    } catch (err) {
+        console.error(err)
+        return res.status(500).send({ success: false, message: "General error", error: err.message })
     }
 }
