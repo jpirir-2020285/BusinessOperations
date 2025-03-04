@@ -1,0 +1,2283 @@
+{
+	"info": {
+		"_postman_id": "caa84f01-afbb-4a2e-9334-739a31d7fb7c",
+		"name": "Business Corporation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37952140"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "Login Admin",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var data = JSON.parse(responseBody);\r",
+											"postman.setGlobalVariable(\"token\", data.token) "
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "userLoggin",
+											"value": "jpirir@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Hola123.",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:1310/v1/auth/login",
+									"host": [
+										"localhost"
+									],
+									"port": "1310",
+									"path": [
+										"v1",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Miguelitouwu",
+											"type": "text"
+										},
+										{
+											"key": "surname",
+											"value": "Pirir",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "Jpirirnuevo12343",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "Miguelito1223@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Hola1234.",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "phone",
+											"value": "12312332",
+											"type": "text"
+										},
+										{
+											"key": "role",
+											"value": "ADMIN",
+											"type": "text"
+										},
+										{
+											"key": "profilePicture",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:1310/v1/user/admin/update/67af7e8b854b17c39199fd69",
+									"host": [
+										"localhost"
+									],
+									"port": "1310",
+									"path": [
+										"v1",
+										"user",
+										"admin",
+										"update",
+										"67af7e8b854b17c39199fd69"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Miguel",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "surname",
+											"value": "Pirir",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "username",
+											"value": "Miguelito123",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "email",
+											"value": "Miguelito123@gmail.com",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "password",
+											"value": "Hola1234.",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "phone",
+											"value": "12312332",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "role",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "profilePicture",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:1310/v1/user/admin/delete/67aec91349aae0d9acdbd023",
+									"host": [
+										"localhost"
+									],
+									"port": "1310",
+									"path": [
+										"v1",
+										"user",
+										"admin",
+										"delete",
+										"67aec91349aae0d9acdbd023"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "test",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "Aut",
+											"value": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:1310/v1/user/test",
+									"host": [
+										"localhost"
+									],
+									"port": "1310",
+									"path": [
+										"v1",
+										"user",
+										"test"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Client",
+					"item": [
+						{
+							"name": "Login Client",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var data = JSON.parse(responseBody);\r",
+											"postman.setGlobalVariable(\"token\", data.token)"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "userLoggin",
+											"value": "jgarcia123",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Hola1234.",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:1310/v1/auth/login",
+									"host": [
+										"localhost"
+									],
+									"port": "1310",
+									"path": [
+										"v1",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Register Client",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Julio",
+											"type": "text"
+										},
+										{
+											"key": "surname",
+											"value": "Garcia",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "Jgarcia123",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "jgarcia123@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Hola1234.",
+											"type": "text"
+										},
+										{
+											"key": "phone",
+											"value": "12345678",
+											"type": "text"
+										},
+										{
+											"key": "role",
+											"value": "ADMIN",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:1310/v1/auth/register",
+									"host": [
+										"localhost"
+									],
+									"port": "1310",
+									"path": [
+										"v1",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update profile",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Miguelitouwu",
+											"type": "text"
+										},
+										{
+											"key": "surname",
+											"value": "Pirir",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "Jpirirnuevo12",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "Miguelito1223@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Hola1234.",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "phone",
+											"value": "12312332",
+											"type": "text"
+										},
+										{
+											"key": "role",
+											"value": "ADMIN",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "profilePicture",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:1310/v1/user/client/update/67aec02f1238998d71e704ef",
+									"host": [
+										"localhost"
+									],
+									"port": "1310",
+									"path": [
+										"v1",
+										"user",
+										"client",
+										"update",
+										"67aec02f1238998d71e704ef"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "password",
+											"value": "Hola1234.",
+											"type": "text"
+										},
+										{
+											"key": "confirmPassword",
+											"value": "Hola1234.",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:1310/v1/user/client/delete",
+									"host": [
+										"localhost"
+									],
+									"port": "1310",
+									"path": [
+										"v1",
+										"user",
+										"client",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "Data",
+					"item": [
+						{
+							"name": "Frio",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "frio",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Porductos que se mantienen frios",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "true",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:1310/v1/category/",
+									"host": [
+										"localhost"
+									],
+									"port": "1310",
+									"path": [
+										"v1",
+										"category",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Panaderia",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Pan/Trigo",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Productos de panaderia o cereales",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "true",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:1310/v1/category/",
+									"host": [
+										"localhost"
+									],
+									"port": "1310",
+									"path": [
+										"v1",
+										"category",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get category",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Caliente",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Porductos calientes",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:1310/v1/category/",
+							"host": [
+								"localhost"
+							],
+							"port": "1310",
+							"path": [
+								"v1",
+								"category",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update category",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Caliente",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Porductos calientes actualizado",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "false",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:1310/v1/category/update/67af4a8720d5b555da71a116",
+							"host": [
+								"localhost"
+							],
+							"port": "1310",
+							"path": [
+								"v1",
+								"category",
+								"update",
+								"67af4a8720d5b555da71a116"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update category Copy",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Caliente",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Porductos calientes actualizado",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "false",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:1310/v1/category/delete/67af491a8dedec4e7ff3a09b",
+							"host": [
+								"localhost"
+							],
+							"port": "1310",
+							"path": [
+								"v1",
+								"category",
+								"delete",
+								"67af491a8dedec4e7ff3a09b"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Data",
+					"item": [
+						{
+							"name": "Leche",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Leche",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Carton de 1 litro de leche",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "124.42",
+											"type": "text"
+										},
+										{
+											"key": "stock",
+											"value": "24",
+											"type": "text"
+										},
+										{
+											"key": "category",
+											"value": "67c5afbedf60be244c023870",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:1310/v1/product/",
+									"host": [
+										"localhost"
+									],
+									"port": "1310",
+									"path": [
+										"v1",
+										"product",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Pan",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Pan",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Bolsa de pan",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "20.5",
+											"type": "text"
+										},
+										{
+											"key": "stock",
+											"value": "55",
+											"type": "text"
+										},
+										{
+											"key": "category",
+											"value": "67c5afbedf60be244c023870",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:1310/v1/product/",
+									"host": [
+										"localhost"
+									],
+									"port": "1310",
+									"path": [
+										"v1",
+										"product",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cereal",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Cereal",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Caja de cereal de maíz 750g",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "25.8",
+											"type": "text"
+										},
+										{
+											"key": "stock",
+											"value": "47",
+											"type": "text"
+										},
+										{
+											"key": "category",
+											"value": "67c5afbedf60be244c023870",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:1310/v1/product/",
+									"host": [
+										"localhost"
+									],
+									"port": "1310",
+									"path": [
+										"v1",
+										"product",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Huevos",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Huevos",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Cartón con 12 huevos",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "20.5",
+											"type": "text"
+										},
+										{
+											"key": "stock",
+											"value": "19",
+											"type": "text"
+										},
+										{
+											"key": "category",
+											"value": "67c5afbedf60be244c023870",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:1310/v1/product/",
+									"host": [
+										"localhost"
+									],
+									"port": "1310",
+									"path": [
+										"v1",
+										"product",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Jugo de Naranja",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Jugo de Naranja",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "CarBotella de jugo natural 1.5Ltón con 12 huevos",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "39.99",
+											"type": "text"
+										},
+										{
+											"key": "stock",
+											"value": "25",
+											"type": "text"
+										},
+										{
+											"key": "category",
+											"value": "67c5afbedf60be244c023870",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:1310/v1/product/",
+									"host": [
+										"localhost"
+									],
+									"port": "1310",
+									"path": [
+										"v1",
+										"product",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "List Product",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Leche",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Carton de 1 litro de leche",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "124.42",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "24",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "67c5444c2b7ffc2d8f6979cc",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:1310/v1/product/",
+							"host": [
+								"localhost"
+							],
+							"port": "1310",
+							"path": [
+								"v1",
+								"product",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List One Product",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Leche",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Carton de 1 litro de leche",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "124.42",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "24",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "67c5444c2b7ffc2d8f6979cc",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:1310/v1/product/67c54cfb54600b9b284d5722",
+							"host": [
+								"localhost"
+							],
+							"port": "1310",
+							"path": [
+								"v1",
+								"product",
+								"67c54cfb54600b9b284d5722"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Of Stock Product",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Leche",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Carton de 1 litro de leche",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "124.42",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "24",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "67c5444c2b7ffc2d8f6979cc",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:1310/v1/product/ofstock",
+							"host": [
+								"localhost"
+							],
+							"port": "1310",
+							"path": [
+								"v1",
+								"product",
+								"ofstock"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List By Name Product",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Leche",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Carton de 1 litro de leche",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "124.42",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "24",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "67c5444c2b7ffc2d8f6979cc",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:1310/v1/product/ofstock",
+							"host": [
+								"localhost"
+							],
+							"port": "1310",
+							"path": [
+								"v1",
+								"product",
+								"ofstock"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Category Product",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Leche",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "Carton de 1 litro de leche",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "124.42",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "stock",
+									"value": "24",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "67c5444c2b7ffc2d8f6979cc",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:1310/v1/product/",
+							"host": [
+								"localhost"
+							],
+							"port": "1310",
+							"path": [
+								"v1",
+								"product",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Top Selling Product",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Leche",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "Carton de 1 litro de leche",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "124.42",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "stock",
+									"value": "24",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "67c5444c2b7ffc2d8f6979cc",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:1310/v1/product/topselling",
+							"host": [
+								"localhost"
+							],
+							"port": "1310",
+							"path": [
+								"v1",
+								"product",
+								"topselling"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Product Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Leche Nueva",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Carton de 1 litro de leche",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "124.42",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "24",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "67c5444c2b7ffc2d8f6979cc",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:1310/v1/product/67c544975deaee0002a4d36d",
+							"host": [
+								"localhost"
+							],
+							"port": "1310",
+							"path": [
+								"v1",
+								"product",
+								"67c544975deaee0002a4d36d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Leche Nueva",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Carton de 1 litro de leche",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "124.42",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "24",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "67c5444c2b7ffc2d8f6979cc",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:1310/v1/product/67c544975deaee0002a4d36d",
+							"host": [
+								"localhost"
+							],
+							"port": "1310",
+							"path": [
+								"v1",
+								"product",
+								"67c544975deaee0002a4d36d"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "Save Cart",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "product",
+									"value": "67c5aff9df60be244c023876",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:1310/v1/cart/",
+							"host": [
+								"localhost"
+							],
+							"port": "1310",
+							"path": [
+								"v1",
+								"cart",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List cart",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "product",
+									"value": "67c5aff9df60be244c023876",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:1310/v1/cart/",
+							"host": [
+								"localhost"
+							],
+							"port": "1310",
+							"path": [
+								"v1",
+								"cart",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove one from cart",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "product",
+									"value": "67c5aff9df60be244c023876",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "2",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:1310/v1/cart/remove",
+							"host": [
+								"localhost"
+							],
+							"port": "1310",
+							"path": [
+								"v1",
+								"cart",
+								"remove"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Clear cart",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "cart",
+									"value": "67c5b6894ae282ad1fff1208",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "2",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:1310/v1/cart/clear",
+							"host": [
+								"localhost"
+							],
+							"port": "1310",
+							"path": [
+								"v1",
+								"cart",
+								"clear"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Invoice",
+			"item": [
+				{
+					"name": "Create invoice",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:1310/v1/invoice/",
+							"host": [
+								"localhost"
+							],
+							"port": "1310",
+							"path": [
+								"v1",
+								"invoice",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List all invoice",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:1310/v1/invoice/",
+							"host": [
+								"localhost"
+							],
+							"port": "1310",
+							"path": [
+								"v1",
+								"invoice",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List invoice user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:1310/v1/invoice/user",
+							"host": [
+								"localhost"
+							],
+							"port": "1310",
+							"path": [
+								"v1",
+								"invoice",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List one invoice",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:1310/v1/invoice/67c5de76bf262204158b37c7",
+							"host": [
+								"localhost"
+							],
+							"port": "1310",
+							"path": [
+								"v1",
+								"invoice",
+								"67c5de76bf262204158b37c7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Invoice",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "status",
+									"value": "Paid",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:1310/v1/invoice/67c5de76bf262204158b37c7",
+							"host": [
+								"localhost"
+							],
+							"port": "1310",
+							"path": [
+								"v1",
+								"invoice",
+								"67c5de76bf262204158b37c7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Invoice Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "status",
+									"value": "Paid",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:1310/v1/invoice/67c5de76bf262204158b37c7",
+							"host": [
+								"localhost"
+							],
+							"port": "1310",
+							"path": [
+								"v1",
+								"invoice",
+								"67c5de76bf262204158b37c7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove one from cart",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "product",
+									"value": "67c5aff9df60be244c023876",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "2",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:1310/v1/cart/remove",
+							"host": [
+								"localhost"
+							],
+							"port": "1310",
+							"path": [
+								"v1",
+								"cart",
+								"remove"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Clear cart",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "cart",
+									"value": "67c5b6894ae282ad1fff1208",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "2",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:1310/v1/cart/clear",
+							"host": [
+								"localhost"
+							],
+							"port": "1310",
+							"path": [
+								"v1",
+								"cart",
+								"clear"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
